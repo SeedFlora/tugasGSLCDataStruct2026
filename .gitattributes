@@ -1,0 +1,7 @@
+# Preserve dataset bytes and pinned hashes on every platform.
+data/* -text
+
+*.md text eol=lf
+*.py text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf

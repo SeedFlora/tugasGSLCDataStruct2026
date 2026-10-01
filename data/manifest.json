@@ -1,0 +1,81 @@
+{
+  "checks": {
+    "original_rows": 17379,
+    "queries": {
+      "queries_n15000.tsv": {
+        "held_out_records": 2379,
+        "hits": 1000,
+        "inserted_records": 15000,
+        "miss_keys_are_valid_source_rows_outside_first_n": true,
+        "misses": 1000,
+        "query_rows": 2000,
+        "unique_date_hour_keys": 2000
+      },
+      "queries_n5000.tsv": {
+        "held_out_records": 12379,
+        "hits": 1000,
+        "inserted_records": 5000,
+        "miss_keys_are_valid_source_rows_outside_first_n": true,
+        "misses": 1000,
+        "query_rows": 2000,
+        "unique_date_hour_keys": 2000
+      }
+    },
+    "shuffled_is_exact_row_permutation": true,
+    "unique_date_hour_keys": 17379
+  },
+  "files": {
+    "hour.csv": {
+      "bytes": 1156736,
+      "data_rows": 17379,
+      "sha256": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f"
+    },
+    "hour_shuffled.csv": {
+      "bytes": 1139356,
+      "data_rows": 17379,
+      "sha256": "06425410a41823e7eea822a866b0e620b388055e5ad09eb9c88f5f1fcb3fa019"
+    },
+    "queries_n15000.tsv": {
+      "bytes": 33663,
+      "data_rows": 2000,
+      "sha256": "d1dd06c19fad81c42ced3d9b9bcd5dfe88b4c85475e523dc17ea34398f396919"
+    },
+    "queries_n5000.tsv": {
+      "bytes": 33734,
+      "data_rows": 2000,
+      "sha256": "ea338a3fbebbdc53bfc1ec5822abb31ece298c26b09ca5b3a7458002b1b577aa"
+    }
+  },
+  "license": {
+    "attribution": "Hadi Fanaee-T, Bike Sharing, UCI Machine Learning Repository (2013)",
+    "changes": "hour.csv is unmodified. hour_shuffled.csv reorders complete rows with Python Random(20261001) and normalizes line endings to LF; query TSV files select hit rows from the first n shuffled rows and valid miss rows from the remaining source rows, then shuffle query order with Random(20261002).",
+    "name": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "recipe": {
+    "interpretation": "A miss is a genuine date-hour pair in the original dataset, absent from the first n shuffled rows used to build that experiment's index.",
+    "key_fields": [
+      "dteday",
+      "hr"
+    ],
+    "miss_expected_cnt": -1,
+    "queries_per_size": 2000,
+    "query_seed_reset_per_size": 20261002,
+    "row_shuffle_seed": 20261001,
+    "script": "../prepare_dataset.py",
+    "sizes": [
+      5000,
+      15000
+    ],
+    "value_field": "cnt"
+  },
+  "source": {
+    "archive_member": "hour.csv",
+    "archive_url": "https://archive.ics.uci.edu/static/public/275/bike+sharing+dataset.zip",
+    "citation": "Fanaee-T, H. (2013). Bike Sharing [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5W894",
+    "original_hour_csv_sha256": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f",
+    "page": "https://archive.ics.uci.edu/dataset/275/bike+sharing+dataset",
+    "repository": "UCI Machine Learning Repository",
+    "title": "Bike Sharing (hourly observations)"
+  }
+}
